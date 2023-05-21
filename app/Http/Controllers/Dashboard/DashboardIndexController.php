@@ -2,29 +2,37 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Contracts\CommentServiceContract;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Http;
 
 class DashboardIndexController extends Controller
 {
+    private $commentService;
+
+    public function __construct(CommentServiceContract $commentService)
+    {
+        $this->commentService = $commentService;
+    }
+
     public function __invoke(): View
     {
-        $sortData = request()->input('sort') ?? ['field' => 'postId', 'direction' => null];
-
-        try {
-            $comments = Http::get('https://jsonplaceholder.typicode.com/comments')->object();
-        } catch (\Exception $e) {
-            throw new \Exception('Error while fetching comments from API');
-        }
-
-        $comments = collect($comments)->sortBy(
-            $sortData['field'],
-            SORT_REGULAR,
-            directionIsDesc($sortData['direction'])
+        $sortData = initSort(
+            request()->input('sort'),
+            'postId'
         );
 
-        return view('pages.dashboard.index', compact('comments'))->with([
+        $comments = $this->commentService->getComments();
+
+        $comments = $this->commentService->sortBy(
+            $comments,
+            $sortData
+        );
+
+        return view(
+            'pages.dashboard.index',
+            compact('comments')
+        )->with([
             'CommentSortDatas' => $sortData,
         ]);
     }

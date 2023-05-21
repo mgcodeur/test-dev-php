@@ -11,11 +11,18 @@ if (! function_exists('getShortenBody')) {
 }
 
 if (! function_exists('directionIsDesc')) {
-    /**
-     * This function returns a direction for sorting
-     */
     function directionIsDesc($direction): bool
     {
         return $direction === 'desc' ? true : false;
+    }
+}
+
+if (! function_exists('initSort')) {
+    function initSort(
+        $data,
+        $defaultField = null,
+        $defaultFieldDirection = null
+    ) {
+        return $data ?? ['field' => $defaultField, 'direction' => $defaultFieldDirection];
     }
 }
