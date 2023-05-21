@@ -13,7 +13,7 @@ if (! function_exists('getShortenBody')) {
 if (! function_exists('directionIsDesc')) {
     function directionIsDesc($direction): bool
     {
-        return $direction === 'desc' ? true : false;
+        return $direction === 'desc';
     }
 }
 
@@ -22,7 +22,7 @@ if (! function_exists('initSort')) {
         $data,
         $defaultField = null,
         $defaultFieldDirection = null
-    ) {
+    ): array {
         return $data ?? ['field' => $defaultField, 'direction' => $defaultFieldDirection];
     }
 }

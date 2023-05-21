@@ -8,7 +8,6 @@ use Illuminate\Contracts\View\View;
 
 class DashboardIndexController extends Controller
 {
-
     public function __invoke(CommentServiceContract $commentService): View
     {
         $sortData = initSort(
