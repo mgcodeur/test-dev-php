@@ -79,10 +79,10 @@
         }
 
         function sortBy(field, direction) {
-            let inputField = document.querySelector('input[name="sort[field]"]');
-            let inputDirection = document.querySelector('input[name="sort[direction]"]');
-            inputDirection.value = currentSort.field === field ? currentSort.direction === 'asc' ? 'desc' : 'asc' : direction;
-            inputField.value = field;
+            let inputSortField = document.querySelector('input[name="sort[field]"]');
+            let inputSortDirection = document.querySelector('input[name="sort[direction]"]');
+            inputSortDirection.value = currentSort.field === field ? currentSort.direction === 'asc' ? 'desc' : 'asc' : direction;
+            inputSortField.value = field;
             commentsForm.submit();
         }
     </script>

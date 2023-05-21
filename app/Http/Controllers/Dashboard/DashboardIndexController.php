@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 
 class DashboardIndexController extends Controller
 {
-    private $commentService;
+    private CommentServiceContract $commentService;
 
     public function __construct(CommentServiceContract $commentService)
     {

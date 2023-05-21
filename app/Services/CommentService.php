@@ -3,13 +3,14 @@
 namespace App\Services;
 
 use App\Contracts\CommentServiceContract;
+use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
 class CommentService implements CommentServiceContract
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getComments(): Collection
     {
@@ -17,8 +18,8 @@ class CommentService implements CommentServiceContract
             $comments = Http::get(
                 config('services.jsonplaceholder.url')
             )->object();
-        } catch (\Exception $e) {
-            throw new \Exception('Error while fetching comments from API');
+        } catch (Exception $e) {
+            throw new Exception('Error while fetching comments from API');
         }
 
         return collect($comments);
