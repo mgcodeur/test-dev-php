@@ -20,8 +20,13 @@
                     <div class="dropdown-header">
                         <i class="i-Lock-User mr-1"></i> {{ auth()->user()->name }}
                     </div>
-                    {{--TODO: enable it--}}
-                    <a class="dropdown-item" href="signin.html">Se deconnecter</a>
+
+                    <form action="{{ route('logout') }}" method="post" id="logout-form">
+                        @csrf
+                        <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit()">
+                            Se deconnecter
+                        </a>
+                    </form>
                 </div>
             </div>
         </div>
