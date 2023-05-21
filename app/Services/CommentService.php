@@ -14,7 +14,9 @@ class CommentService implements CommentServiceContract
     public function getComments(): Collection
     {
         try {
-            $comments = Http::get('https://jsonplaceholder.typicode.com/comments')->object();
+            $comments = Http::get(
+                config('services.jsonplaceholder.url')
+            )->object();
         } catch (\Exception $e) {
             throw new \Exception('Error while fetching comments from API');
         }
