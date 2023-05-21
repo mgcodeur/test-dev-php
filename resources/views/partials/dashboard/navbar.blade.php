@@ -11,7 +11,7 @@
     <div style="margin: auto"></div>
 
     <div class="header-part-right">
-        <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i>
+        {{-- <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i> --}}
 
         <div class="dropdown">
             <div class="user col align-self-end">

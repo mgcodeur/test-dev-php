@@ -2,7 +2,6 @@
     <ul class="navigation-left">
         <li class="nav-item active" >
             <a class="nav-item-hold" href="#">
-            <i class="nav-icon i-Bar-Chart"></i>
             <span class="nav-text">Dashboard</span></a>
             <div class="triangle"></div>
         </li>
