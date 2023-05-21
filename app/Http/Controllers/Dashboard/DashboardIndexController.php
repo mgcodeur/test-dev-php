@@ -8,23 +8,17 @@ use Illuminate\Contracts\View\View;
 
 class DashboardIndexController extends Controller
 {
-    private CommentServiceContract $commentService;
 
-    public function __construct(CommentServiceContract $commentService)
-    {
-        $this->commentService = $commentService;
-    }
-
-    public function __invoke(): View
+    public function __invoke(CommentServiceContract $commentService): View
     {
         $sortData = initSort(
             request()->input('sort'),
             'postId'
         );
 
-        $comments = $this->commentService->getComments();
+        $comments = $commentService->getComments();
 
-        $comments = $this->commentService->sortBy(
+        $comments = $commentService->sortBy(
             $comments,
             $sortData
         );
